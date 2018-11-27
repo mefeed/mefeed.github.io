@@ -1,0 +1,130 @@
+<div ng-controller="lam_accountpage_controller">
+    <div class="profile-page">
+        <div class="user-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-10 offset-md-1">
+                        <img class="user-img" ng-src="{{profile.image}}" />
+                        <h4>
+                            {{profile.username}}
+                        </h4>
+                        <p>
+                            {{profile.bio}}
+                        </p>
+                        <span ng-show="displayBlockFollow">
+                            <button class="btn btn-sm btn-outline-secondary action-btn" ng-click="follow(profile.username)" ng-show="displayFollow">
+                                <i class="ion-plus-round">
+                                </i>
+                                Follow {{profile.username}}
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary action-btn" ng-click="follow(profile.username)" ng-show="!displayFollow">
+                                <i class="ion-plus-round">
+                                </i>
+                                Unfollow {{profile.username}}
+                            </button>
+                        </span>
+                        <span ng-show="!displayBlockFollow">
+                            <a href="">
+                                <button class="btn btn-sm btn-outline-secondary action-btn">
+                                        <i class="ion-gear-a">
+                                        </i>
+                                        Edit Profile Settings
+                                    </button>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 offset-md-1">
+                    <div class="articles-toggle">
+                        <ul class="nav nav-pills outline-active">
+                            <li class="nav-item">
+                                <a class="nav-link" ng-click="goTolistArticles()">
+                                    My Articles
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" ng-click="toToListArticlesFavorited()">
+                                    Favorited Articles
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- fix view -->
+                    <!-- *********listArticles********* -->
+                    <div class="listArticles" ng-show="displayArticle">
+                        <div class="article-preview" ng-repeat='articles in listArticles'>
+                            <div class="article-meta">
+                                <a href="">
+                                    <img ng-src="{{articles.author.image}}" />
+                                </a>
+                                <div class="info">
+                                    <a class="author" ui-sref="lam_accountpage({username:articles.author.username})">
+                                        {{articles.author.username}}
+                                    </a>
+                                    <span class="date">
+                                        {{articles.createdAt}}
+                                    </span>
+                                </div>
+                                <button class="btn btn-outline-primary btn-sm pull-xs-right" ng-click="favorite(articles.slug)">
+                                    <i class="ion-heart">
+                                    </i>
+                                    {{articles.favoritesCount}}
+                                </button>
+                            </div>
+                            <a class="preview-link" ui-sref="lam_article_detail({slug:articles.slug})">
+                                <h1>
+                                    {{articles.title}}
+                                </h1>
+                                <p>
+                                    {{articles.title.description}}
+                                </p>
+                                <span>
+                                    Read more...
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- *********listArticlesFavorited********* -->
+                    <div class="listArticlesFavorited" ng-show="!displayArticle">
+                        <div class="article-preview" ng-repeat='articles in listArticlesFavorited'>
+                            <div class="article-meta">
+                                <a href="">
+                                    <img ng-src="{{articles.author.image}}" />
+                                </a>
+                                <div class="info">
+                                    <a class="author" ui-sref="lam_accountpage({username:articles.author.username})">
+                                        {{articles.author.username}}
+                                    </a>
+                                    <span class="date">
+                                        {{articles.createdAt}}
+                                    </span>
+                                </div>
+                                <button class="btn btn-outline-primary btn-sm pull-xs-right" ng-click="favorite(articles.slug)">
+                                    <i class="ion-heart">
+                                    </i>
+                                    {{articles.favoritesCount}}
+                                </button>
+                            </div>
+                            <a class="preview-link" ui-sref="lam_article_detail({slug:articles.slug})">
+                                <h1>
+                                    {{articles.title}}
+                                </h1>
+                                <p>
+                                    {{articles.title.description}}
+                                </p>
+                                <span>
+                                    Read more...
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end fix view -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

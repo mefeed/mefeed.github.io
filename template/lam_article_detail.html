@@ -1,0 +1,140 @@
+<div class="article-page" ng-controller="lam_article_detail_controller">
+
+    <div class="banner">
+        <div class="container">
+
+            <h1>{{article.title}}</h1>
+
+            <div class="article-meta">
+                <a ui-sref="lam_accountpage({username:article.author.username})"><img ng-src="{{article.author.image}}" /></a>
+                <div class="info">
+                    <a ui-sref="lam_accountpage({username:article.author.username})" class="author">{{article.author.username}}</a>
+                    <span class="date">{{article.updatedAt}}</span>
+                </div>
+                <!-- follow -->
+                <span ng-show="displayBlockFollow">
+                    <button class="btn btn-sm btn-outline-secondary" ng-click="follow(article.author.username)" ng-show="displayFollow">
+                    <i class="ion-plus-round"></i>
+                    &nbsp;
+                    Follow {{article.author.username}}<span class="counter">(10)</span>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" ng-click="follow(article.author.username)" ng-show="!displayFollow">
+            <i class="ion-plus-round"></i>
+            &nbsp;
+            Unfollow {{article.author.username}}<span class="counter">(10)</span>
+          </button> &nbsp; &nbsp;
+                </span>
+                <!--end follow -->
+                <!-- favorite -->
+                <button class="btn btn-sm btn-outline-primary" ng-click="favorite(article.slug)" ng-show="!displayFavorite">
+            <i class="ion-heart"></i>
+            &nbsp;
+            Favorite Post <span class="counter">({{article.favoritesCount}})</span>
+          </button>
+                <button class="btn btn-sm btn-outline-primary" ng-click="favorite(article.slug)" ng-show="displayFavorite">
+            <i class="ion-heart"></i>
+            &nbsp;
+            Unfavorite Post <span class="counter">({{article.favoritesCount}})</span>
+          </button>
+                <!--end favorite -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container page">
+
+        <div class="row article-content">
+            <div class="col-md-12">
+                <p>
+                    {{article.description}}
+                </p>
+                <h2 id="introducing-ionic">{{article.title}}</h2>
+                <p>{{article.body}}</p>
+                {{article.tagList}}
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="article-actions">
+            <div class="article-meta">
+                <a ui-sref="lam_accountpage({username:article.author.username})"><img ng-src="{{article.author.image}}" /></a>
+                <div class="info">
+                    <a ui-sref="lam_accountpage({username:article.author.username})">{{article.author.username}}</a>
+                    <span class="date">{{article.updatedAt}}</span>
+                </div>
+
+                <!-- follow -->
+                <span ng-show="displayBlockFollow">
+                    <button class="btn btn-sm btn-outline-secondary" ng-click="follow(article.author.username)" ng-show="displayFollow">
+                                <i class="ion-plus-round"></i>
+                                &nbsp;
+                                Follow {{article.author.username}}<span class="counter">(10)</span>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" ng-click="follow(article.author.username)" ng-show="!displayFollow">
+                        <i class="ion-plus-round"></i>
+                        &nbsp;
+                        Unfollow {{article.author.username}}<span class="counter">(10)</span>
+                      </button> &nbsp; &nbsp;
+                </span>
+                <!--end follow -->
+                <!-- favorite -->
+                <button class="btn btn-sm btn-outline-primary" ng-click="favorite(article.slug)" ng-show="!displayFavorite">
+            <i class="ion-heart"></i>
+            &nbsp;
+            Favorite Post <span class="counter">({{article.favoritesCount}})</span>
+          </button>
+                <button class="btn btn-sm btn-outline-primary" ng-click="favorite(article.slug)" ng-show="displayFavorite">
+            <i class="ion-heart"></i>
+            &nbsp;
+            Unfavorite Post <span class="counter">({{article.favoritesCount}})</span>
+          </button>
+                <!--end favorite -->
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12 col-md-8 offset-md-2">
+
+                <form class="card comment-form">
+                    <div class="card-block">
+                        <textarea class="form-control" placeholder="Write a comment..." rows="3" ng-model="textComment"></textarea>
+                    </div>
+                    <div class="card-footer">
+                        <a ui-sref="lam_accountpage({username:article.author.username})">
+                            <img ng-src="{{currentLogin.image}}" class="comment-author-img" />
+                        </a>
+                        <button class="btn btn-sm btn-primary" ng-click="postComment(article.slug)">
+                        Post Comment
+                        </button>
+                    </div>
+                </form>
+
+                <div class="card" ng-repeat="comment in comments">
+                    <div class="card-block">
+                        <p class="card-text">{{comment.body}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="" class="comment-author">
+                            <img ng-src="{{comment.author.image}}" class="comment-author-img" />
+                        </a>
+                        &nbsp;
+                        <a href="" class="comment-author">{{comment.author.username}}</a>
+                        <span class="date-posted">{{comment.updatedAt}}</span>
+                        <span ng-show="checkDisplayEditComment(comment.author.username)">
+                                <span class="mod-options">
+                                        <i class="ion-edit"></i>
+                                        <i class="ion-trash-a" ng-click="deleteComment(article.slug,comment.id)"></i>
+                                      </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

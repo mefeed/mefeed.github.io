@@ -1,0 +1,31 @@
+<!-- sign in -->
+<div class="auth-page">
+    <div class="container page">
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3 col-xs-12">
+                <h1 class="text-xs-center">Sign in</h1>
+                <p class="text-xs-center">
+                    <a ui-sref="signUp">Need an account?</a>
+                </p>
+
+                <ul class="error-messages" ng-show='showErr'>
+                    <li>email or password {{Err}}</li>
+                </ul>
+
+                <form>
+                    <fieldset class="form-group">
+                        <input class="form-control form-control-lg" placeholder="Email" ng-model='email' required type="email">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <input class="form-control form-control-lg" type="password" placeholder="Password" ng-model='password' required>
+                    </fieldset>
+                    <button class="btn btn-lg btn-primary pull-xs-right" ng-click='signIn()'>
+                        Sign in
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

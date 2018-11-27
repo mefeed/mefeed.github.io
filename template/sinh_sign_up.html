@@ -1,0 +1,35 @@
+<!-- sign up -->
+<div class="auth-page">
+    <div class="container page">
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3 col-xs-12">
+                <h1 class="text-xs-center">Sign up</h1>
+                <p class="text-xs-center">
+                    <a ui-sref="signIn">Have an account?</a>
+                </p>
+
+                <ul class="error-messages" ng-show='showErr'>
+                    <li ng-repeat='err in emailErr'>email {{err}}</li>
+                    <li ng-repeat='err in passErr'>password {{err}}</li>
+                    <li ng-repeat='err in usernameErr'>username {{err}}</li>
+                </ul>
+
+                <form>
+                    <fieldset class="form-group">
+                        <input class="form-control form-control-lg" type="text" placeholder="Your Name" ng-model='name'>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <input class="form-control form-control-lg" type="email" placeholder="Email" ng-model='email'>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <input class="form-control form-control-lg" type="password" placeholder="Password" ng-model='password'>
+                    </fieldset>
+                    <button class="btn btn-lg btn-primary pull-xs-right" ng-click='signUp()'>
+                        Sign up
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

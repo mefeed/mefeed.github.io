@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Logined-Conduit
+    </title>
+    </meta>
+    <!-- Import Ionicon icons & Google Fonts our Bootstrap theme relies on -->
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    </link>
+    <link href="//fonts.googleapis.com/css?family=Titillium+Web:700|Source+Serif+Pro:400,700|Merriweather+Sans:400,700|Source+Sans+Pro:400,300,600,700,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    </link>
+    <!-- Import the custom Bootstrap 4 theme from our hosted CDN -->
+    <link href="//demo.productionready.io/main.css" rel="stylesheet">
+    </link>
+</head>
+
+<body ng-app="myFeed">
+    <!-- header -->
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                    conduit
+                </a>
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <!-- Add "active" class when you're on that page" -->
+                    <a class="nav-link active" href="">
+                            Home
+                        </a>
+                </li>
+                <li class="nav-item" ng-show="true">
+                    <a class="nav-link">
+                        <i class="ion-compose">
+                            </i> New Article
+                    </a>
+                </li>
+                <li class="nav-item" ng-show="false">
+                    <a class="nav-link" href="">
+                        <i class="ion-gear-a">
+                            </i> Settings
+                    </a>
+                </li>
+                <!-- sinh1 -->
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="signIn">Sign in</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="signUp">Sign up</a>
+                </li>
+                <!-- end sinh1 -->
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="lam_accountpage({username:'lamnt42'})">
+                            Account page
+                        </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- end header -->
+    <!-- body -->
+    <!-- -->
+    <!-- code here -->
+    <ui-view>
+    </ui-view>
+    <!-- -->
+    <!-- end body -->
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <a class="logo-font" href="/">
+                    conduit
+                </a>
+            <span class="attribution">
+                    An interactive learning project from
+                    <a href="https://thinkster.io">
+                        Thinkster
+                    </a>
+                    . Code & design licensed under MIT.
+                </span>
+        </div>
+    </footer>
+    <!-- end footer -->
+    <script src="https://code.angularjs.org/1.7.5/angular.min.js">
+    </script>
+    <script src="https://code.angularjs.org/1.7.5/angular-resource.min.js">
+    </script>
+    <script src="https://unpkg.com/@uirouter/angularjs@1.0.20/release/angular-ui-router.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js">
+    </script>
+    <!-- code -->
+
+    <!-- code lam -->
+    <script src="js/app.routing.js">
+    </script>
+    <script src="js/services/common_services_userinfo.js">
+    </script>
+    <script src="js/services/lam_accountpage_services.js"></script>
+    <script src="js/services/lam_article_detail_services.js"></script>
+    <script src="js/controllers/lam_accountpage_controller.js"></script>
+    <script src="js/controllers/lam_article_detail_controller.js"></script>
+    <!-- code truong -->
+    <!-- code sinh -->
+    <!-- sinh1 -->
+    <script src="js/controllers/signUp.controller.js"></script>
+    <script src="js/controllers/signIn.controller.js"></script>
+    <!-- link cdn -->
+    <script src="https://code.angularjs.org/1.7.5/angular-mocks.js">
+    </script>
+</body>
+
+</html>
