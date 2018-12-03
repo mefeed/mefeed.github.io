@@ -1,0 +1,87 @@
+<div class="home-page">
+    <div class="banner">
+        <div class="container">
+            <h1 class="logo-font">conduit</h1>
+            <p>A place to share your knowledge.</p>
+        </div>
+    </div>
+
+    <div class="container page">
+        <div class="row">
+
+            <div class="col-md-9">
+                <div class="feed-toggle">
+                    <ul class="nav nav-pills outline-active">
+                        <li class="nav-item" ng-show="!logout">
+                            <a href="" class="nav-link" ng-class="{ active: listConfig.type === 'my_feed' }" ng-click="changeList({ type: 'my_feed' })">
+                My Feed
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link" ng-class="{ active: listConfig.type === 'global_feed'}" ng-click="changeList({ type: 'global_feed' })">
+                Global Feed
+              </a>
+                        </li>
+                        <li class="nav-item" ng-show="filtersTag">
+                            <a href="" class="nav-link active ng-binding">
+                                <i class="ion-pound"></i> {{tagName}}
+                            </a>
+                        </li>
+                    </ul>
+                    <div ng-show="!feedLoaded">
+                        {{message}}
+                    </div>
+                </div>
+                <div class="article-preview" ng-repeat="article in articles">
+
+                    <div class="article-meta">
+                        <a href="#/@{{article.author.username}}" ui-sref="profile({ username: article.author.username })">
+                            <img ng-src="{{article.author.image}}" alt="" />
+                        </a>
+                        <div class="info">
+                            <a href="#/@{{article.author.username}}" ui-sref="profile({ username: article.author.username })" class="author">{{article.author.username}}</a>
+                            <span class="date">{{article.updatedAt | date :'MMMM d, yyyy'}}</span>
+                        </div>
+                        <button class="btn btn-sm" ng-class="{ 'disabled': isSubmitting,
+              'btn-outline-primary': !article.favorited,
+              'btn-primary': article.favorited }" ng-click="submit(article.slug, article.favorited, listConfig.type)">
+            <i class="ion-heart"></i> {{article.favoritesCount}}
+          </button>
+                    </div>
+                    <a href="/article/{{article.slug}}" class="preview-link">
+                        <h1 ui-sref="lam_article_detail({slug: article.slug})">{{article.title}}</h1>
+                        <p class="body-summary" ui-sref="lam_article_detail({slug: article.slug})">{{article.body}}</p>
+                        <span ui-sref="lam_article_detail({slug: article.slug})">Read more...</span>
+                        <ul class="tag-list">
+                            <li class="tag-default tag-pill tag-outline ng-binding ng-scope" ng-repeat="tag in article.tagList |  limitTo: 5">
+                                {{tag}}
+                            </li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="sidebar">
+                    <p>Popular Tags</p>
+                    <div class="tag-list">
+                        <a href="" class="tag-pill tag-default" ng-repeat="tagName in tags" ng-bind="tagName" ng-click="changeList({type:'tag',filters:{tag: tagName}})">{{tagName}}</a>
+                    </div>
+                    <div ng-show="!tagsLoaded">
+                        Loading tags...
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- page -->
+        <list-pagination class="ng-isolate-scope" ng-hide="articlesCount <= 1">
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item ng-scope" ng-repeat="pageNumber in pageRange" ng-class="{active: pageNumber === currentPage }" ng-click="changePage(pageNumber)">
+                        <a class="page-link ng-binding" href="">{{pageNumber + 1}}</a>
+                </ul>
+            </nav>
+        </list-pagination>
+
+    </div>
+</div>

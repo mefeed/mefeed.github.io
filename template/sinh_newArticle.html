@@ -1,0 +1,40 @@
+<div class="editor-page">
+    <div class="container page">
+        <div class="row">
+
+            <div class="col-md-10 offset-md-1 col-xs-12">
+
+                <ul class="error-messages" ng-show='showErr'>
+                    <li ng-repeat='err in bodyEr'>body {{err}}</li>
+                    <li ng-repeat='err in descriptionEr'>description {{err}}</li>
+                    <li ng-repeat='err in titleEr'>title {{err}}</li>
+                </ul>
+                <form>
+                    <fieldset>
+                        <fieldset class="form-group">
+                            <input type="text" class="form-control form-control-lg" placeholder="Article Title" ng-model='titleAr'>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="text" class="form-control" placeholder="What's this article about?" ng-model='desAr'>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <textarea class="form-control" rows="8" placeholder="Write your article (in markdown)" ng-model='contentAr'></textarea>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter tags" ng-model='tagsAr' ng-keydown="$event.keyCode === 13 && act()">
+                            <div class="tag-list">
+                                <span href="" class="tag-default tag-pill ng-binding ng-scope" ng-repeat="tagName in arrTagListr" ng-click="deleteTagName()">
+                                    <i class="ion-close-round"></i> {{tagName}} 
+                                </span>
+                            </div>
+                        </fieldset>
+                        <button class="btn btn-lg pull-xs-right btn-primary" type="button" ng-click='publishArticle()'>
+                            Publish Article
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

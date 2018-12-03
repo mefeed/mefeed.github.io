@@ -49,6 +49,28 @@
                 }
             })).query();
 
+            //deleteArticle
+            this.deleteArticle = (slug, token) => ($resource(`${baseUrl}/api/articles/${slug}`, {}, {
+                query: {
+                    method: "DELETE",
+                    headers: {
+                        authorization: `Token ${token}`,
+                        'content-type': 'application/json'
+                    }
+                }
+            })).query();
+
+            //updateArticle
+            this.updateArticle = (slug, token) => ($resource(`${baseUrl}/api/articles/${slug}`, {}, {
+                query: {
+                    method: "PUT",
+                    headers: {
+                        authorization: `Token ${token}`,
+                        'content-type': 'application/json'
+                    }
+                }
+            }));
+
             //Favorite Article
             this.favoriteArticle = (slug, token) => ($resource(`${baseUrl}/api/articles/${slug}/favorite`, {}, {
                 query: {

@@ -15,14 +15,18 @@
                 data: data,
             }).then(function successCallback(response) {
                 $window.localStorage.token = response.data.user.token;
-                //lam 1 in merger 1
+                $window.localStorage.username = response.data.user.username;
+                $window.localStorage.email = $scope.email;
+                $window.localStorage.pw = $scope.password;
                 $scope.username = response.data.user.username;
+                $scope.usernameLogin = response.data.user.username;
                 common_services_userinfo.saveUser(response.data.user, $scope.password);
-                //end lam 1 in merger 1
             }, function errorCallback(response) {
                 $scope.showErr = true;
                 $scope.Err = 'is invalid'
             }).then(() => {
+                $scope.$emit('toggleMenu');
+                $scope.$emit('updateAccount');
                 $state.go(`lam_accountpage`, { username: $scope.username });
             })
 

@@ -12,7 +12,11 @@
                 getUser: () => ({ user: this.user, pw: this.pw }),
                 getEmailPW: () => ({ email: this.user.email, pw: this.pw }),
                 getToken: () => this.user.token,
-                getUsername: () => this.user.username
+                getUsername: () => this.user.username,
+                getEmail: () => this.user.email,
+                setToken: token => { this.user.token = token },
+                setUsername: username => { this.user.username = username },
+                setEmail: email => { this.user.email = email }
             }
         })
 })();

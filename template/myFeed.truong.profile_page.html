@@ -1,0 +1,77 @@
+<div class="profile-page">
+
+  <div class="user-info">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <img ng-src="{{profile.image}}" class="user-img" />
+          <h4>{{profile.username}}</h4>
+          <p>
+           {{profile.bio}}
+         </p>
+         <button class="btn btn-sm action-btn" ng-class="{ 'disabled': isSubmitting, 'btn-outline-secondary': !profile.following, 'btn-secondary': profile.following }" ng-click="submit(profile.username, profile.following)">
+         <i class="ion-plus-round"></i>
+         &nbsp;
+         {{follow}} {{profile.username}}
+       </button>
+     </div>
+
+   </div>
+ </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12 col-md-10 offset-md-1">
+      <div class="articles-toggle">
+        <ul class="nav nav-pills outline-active">
+          <li class="nav-item">
+            <a class="nav-link active" href="" ng-class="{ active: listConfig.type === 'my_articles'}" ng-click="changeList({ type: 'my_articles' })">My Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" ng-class="{ active: listConfig.type === 'favorited_articles'}" ng-click="changeList({ type: 'favorited_articles' })">Favorited Articles</a>
+          </li>
+        </ul>
+        <div ng-show="!feedLoaded">
+          {{message}}
+        </div>
+      </div>
+
+      <div class="article-preview" ng-repeat="article in articles">
+        <div class="article-meta">
+          <a href=""><img ng-src="{{article.author.image}}" /></a>
+          <div class="info">
+            <a href="" class="author">{{article.author.username}}</a>
+            <span class="date">{{article.updatedAt | date :'MMMM d, yyyy'}}</span>
+          </div>
+          <button class="btn btn-sm pull-xs-right" ng-class="{ 'disabled': isSubmitting,
+          'btn-outline-primary': !article.favorited,
+          'btn-primary': article.favorited }" ng-click="submit(article.slug, article.favorited, listConfig.type)">
+          <i class="ion-heart"></i> {{article.favoritesCount}}
+        </button>
+      </div>
+      <a href="" class="preview-link">
+        <h1>{{article.title}}</h1>
+        <p class="body-summary">{{article.body}}</p>
+        <span>Read more...</span>
+        <ul class="tag-list">
+          <li class="tag-default tag-pill tag-outline ng-binding ng-scope" ng-repeat="tag in article.tagList | limitTo: 5">
+            {{tag}}
+          </li>
+        </ul>
+      </a>
+    </div>
+    <list-pagination class="ng-isolate-scope" ng-hide="articlesCount <= 1">
+      <nav>
+        <ul class="pagination">
+         <li class="page-item ng-scope" ng-repeat="pageNumber in pageRange" ng-class="{active: pageNumber === currentPage }" ng-click="changePage(pageNumber)">
+          <a class="page-link ng-binding" href="">{{pageNumber + 1}}</a>
+        </ul>
+      </nav>
+    </list-pagination>
+  </div>
+</div>
+</div>
+</div>

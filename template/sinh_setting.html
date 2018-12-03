@@ -1,0 +1,39 @@
+<div class="settings-page">
+    <div class="container page">
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3 col-xs-12">
+                <h1 class="text-xs-center">Your Settings</h1>
+                <ul class="error-messages" ng-show='showErr'>
+                    <li>email or password {{mes}}</li>
+                </ul>
+                <form>
+                    <fieldset>
+                        <fieldset class="form-group">
+                            <input class="form-control" type="text" placeholder="URL of profile picture" ng-model='urlPr'>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input class="form-control form-control-lg" type="text" placeholder="Your Name" ng-model='yourName'>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <textarea class="form-control form-control-lg" rows="8" placeholder="Short bio about you" ng-model='bio'></textarea>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input class="form-control form-control-lg" type="email" placeholder="Email" ng-model='email'>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input class="form-control form-control-lg" type="password" placeholder="Password" ng-model='passW'>
+                        </fieldset>
+                        <button class="btn btn-lg btn-primary pull-xs-right" ng-click='updateSettings()'>
+                            Update Settings
+                        </button>
+                        <button class="btn btn-lg btn-danger pull-xs-left" ng-click='logout()'>
+                            Log out
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

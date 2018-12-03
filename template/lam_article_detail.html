@@ -23,8 +23,6 @@
             &nbsp;
             Unfollow {{article.author.username}}<span class="counter">(10)</span>
           </button> &nbsp; &nbsp;
-                </span>
-                <!--end follow -->
                 <!-- favorite -->
                 <button class="btn btn-sm btn-outline-primary" ng-click="favorite(article.slug)" ng-show="!displayFavorite">
             <i class="ion-heart"></i>
@@ -37,6 +35,18 @@
             Unfavorite Post <span class="counter">({{article.favoritesCount}})</span>
           </button>
                 <!--end favorite -->
+                </span>
+                <!--end follow -->
+                <!-- edit delete -->
+                <span ng-show="!displayBlockFollow">
+                    <a class="btn btn-outline-secondary btn-sm" ng-click="editArticle(article.slug)">
+                      <i class="ion-edit"></i> Edit Article
+                    </a>
+                    <button class="btn btn-outline-danger btn-sm" ng-click="deleteArticle(article.slug)">
+                      <i class="ion-trash-a"></i> Delete Article
+                    </button>
+                  </span>
+                <!--end  edit delete -->
             </div>
         </div>
     </div>
@@ -76,27 +86,26 @@
                         &nbsp;
                         Unfollow {{article.author.username}}<span class="counter">(10)</span>
                       </button> &nbsp; &nbsp;
-                </span>
-                <!--end follow -->
                 <!-- favorite -->
                 <button class="btn btn-sm btn-outline-primary" ng-click="favorite(article.slug)" ng-show="!displayFavorite">
-            <i class="ion-heart"></i>
-            &nbsp;
-            Favorite Post <span class="counter">({{article.favoritesCount}})</span>
-          </button>
+                    <i class="ion-heart"></i>
+                    &nbsp;
+                    Favorite Post <span class="counter">({{article.favoritesCount}})</span>
+                  </button>
                 <button class="btn btn-sm btn-outline-primary" ng-click="favorite(article.slug)" ng-show="displayFavorite">
-            <i class="ion-heart"></i>
-            &nbsp;
-            Unfavorite Post <span class="counter">({{article.favoritesCount}})</span>
-          </button>
+                    <i class="ion-heart"></i>
+                    &nbsp;
+                    Unfavorite Post <span class="counter">({{article.favoritesCount}})</span>
+                  </button>
                 <!--end favorite -->
-
+                </span>
+                <!--end follow -->
             </div>
         </div>
 
         <div class="row">
 
-            <div class="col-xs-12 col-md-8 offset-md-2">
+            <div class="col-xs-12 col-md-8 offset-md-2" ng-show="displayComment">
 
                 <form class="card comment-form">
                     <div class="card-block">
@@ -132,7 +141,12 @@
                     </div>
                 </div>
             </div>
-
+            <div ng-show="!displayComment" class="container">
+                <span><a ui-sref="signIn">Sign in</a></span>
+                <span> or</span>
+                <span><a ui-sref="signUp">Sign up</a></span>
+                <span> to add comments on this article.</span>
+            </div>
         </div>
 
     </div>

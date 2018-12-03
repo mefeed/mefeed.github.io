@@ -1,18 +1,28 @@
 (() => {
     angular.module("myFeed")
         .controller("lam_article_detail_controller", [
+            '$window',
             '$scope',
             '$stateParams',
             '$state',
             'lam_accountpage_services',
             'common_services_userinfo',
             function(
+                $window,
                 $scope,
                 $stateParams,
                 $state,
                 lam_accountpage_services,
-                common_services_userinfo,
+                common_services_userinfo
             ) {
+                //****************************set token and username************************** */
+                common_services_userinfo.setToken($window.localStorage.token);
+                common_services_userinfo.setUsername($window.localStorage.username);
+                $scope.displayComment = false;
+                if (common_services_userinfo.getToken() === undefined) {
+                    $scope.displayComment = false;
+                }
+
                 //load my slug article i am favorited
                 $scope.load_listArticlesFavoritedSlug = (username, token) => {
                     return lam_accountpage_services.listArticlesFavorited(username, token).$promise
@@ -72,6 +82,9 @@
                     }
                 }
                 $scope.follow = (username, token = common_services_userinfo.getToken()) => {
+                    if (common_services_userinfo.getToken() === undefined) {
+                        $state.go("signIn");
+                    }
                     $scope.load_statusMeFollowUser(username, token).then((data) => {
                             $scope.statusMeFollowUser = data;
                         })
@@ -89,6 +102,15 @@
                             }
                         })
                 };
+                //******************************delete edit article************************************ */
+                $scope.editArticle = (slug) => {
+                    $state.go("editArticle", { slug: slug });
+                }
+                $scope.deleteArticle = (slug) => {
+                    lam_accountpage_services.deleteArticle(slug, common_services_userinfo.getToken()).$promise.then(res => {
+                        $state.go("lam_accountpage", { username: common_services_userinfo.getUsername() })
+                    })
+                };
                 //******************************Get comment************************************ */
                 $scope.checkDisplayEditComment = (username) => {
                     if (username == common_services_userinfo.getUsername()) {
@@ -99,7 +121,6 @@
                 }
                 $scope.getComment = (slug) => {
                     return lam_accountpage_services.getComment(slug).$promise.then(data => {
-                        console.log(data.comments);
                         return data.comments;
                     });
                 };
@@ -110,11 +131,11 @@
                     });
                 };
                 $scope.deleteComment = (slug, id, token = common_services_userinfo.getToken()) => {
-                        lam_accountpage_services.deleteComment(slug, id, token).$promise.then(() => {
-                            $scope.reload();
-                        });
-                    }
-                    //******************************getArticle************************************ */
+                    lam_accountpage_services.deleteComment(slug, id, token).$promise.then(() => {
+                        $scope.reload();
+                    });
+                };
+                //******************************getArticle************************************ */
                 lam_accountpage_services.getArticle($stateParams.slug).$promise
                     .then(data => {
                         $scope.article = data.article;
@@ -140,6 +161,9 @@
                     .then(() => {
                         //action click favorite
                         $scope.favorite = (slug) => {
+                            if (common_services_userinfo.getToken() === undefined) {
+                                $state.go("signIn");
+                            }
                             //if favorited
                             if ($scope.listArticlesFavoritedSlug.includes(slug) == true) {
                                 return lam_accountpage_services.unfavoriteArticle(slug, common_services_userinfo.getToken()).$promise

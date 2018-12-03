@@ -7,8 +7,9 @@
     "use strict"
     angular.module('myFeed', [
         "ui.router",
-        "ngResource"
-    ]).config(function($stateProvider) {
+        "ngResource",
+        'ngCookies',
+    ]).config(function($urlRouterProvider, $stateProvider) {
         //**********code by lam**********
         //lam_accountpage
         $stateProvider.state({
@@ -25,7 +26,27 @@
             templateUrl: "template/lam_article_detail.html",
             controller: "lam_article_detail_controller"
         });
+        //lam_article_detail
+        $stateProvider.state({
+            name: "editArticle",
+            url: "/editArticle/:slug",
+            templateUrl: "template/editArticle.html",
+            controller: "editArticleCtrl"
+        });
         //**********code by truong**********
+        $urlRouterProvider.otherwise('/home');
+        $stateProvider.state({
+            name: 'home',
+            url: '/home',
+            templateUrl: 'template/myFeed.truong.home_page.html',
+            controller: 'myFeed.truong.controller.home'
+        });
+        $stateProvider.state({
+            name: 'profile',
+            url: '/@:username',
+            templateUrl: 'template/myFeed.truong.profile_page.html',
+            controller: 'myFeed.truong.controller.profile'
+        });
         //**********code by sinh**********
         //sinh1
         $stateProvider.state({
@@ -39,6 +60,18 @@
             url: '/signUp',
             templateUrl: '/template/sinh_sign_up.html',
             controller: 'sinh_controller_signUp',
+        });
+        $stateProvider.state({
+            name: 'setting',
+            url: '/setting',
+            templateUrl: '/template/sinh_setting.html',
+            controller: 'sinh_setting',
+        });
+        $stateProvider.state({
+            name: 'newArticle',
+            url: '/newArticle',
+            templateUrl: '/template/sinh_newArticle.html',
+            controller: 'sinh_newArticle',
         });
 
     })

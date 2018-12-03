@@ -17,7 +17,7 @@
     </link>
 </head>
 
-<body ng-app="myFeed">
+<body ng-app="myFeed" ng-controller="myFeedCtrl">
     <!-- header -->
     <nav class="navbar navbar-light">
         <div class="container">
@@ -27,33 +27,33 @@
             <ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item">
                     <!-- Add "active" class when you're on that page" -->
-                    <a class="nav-link active" href="">
+                    <a class="nav-link active" ui-sref="home">
                             Home
                         </a>
                 </li>
-                <li class="nav-item" ng-show="true">
+                <li class="nav-item" ng-show="checkLogin" ui-sref="newArticle">
                     <a class="nav-link">
                         <i class="ion-compose">
                             </i> New Article
                     </a>
                 </li>
-                <li class="nav-item" ng-show="false">
+                <li class="nav-item" ng-show="checkLogin" ui-sref="setting">
                     <a class="nav-link" href="">
                         <i class="ion-gear-a">
                             </i> Settings
                     </a>
                 </li>
                 <!-- sinh1 -->
-                <li class="nav-item">
+                <li class="nav-item" ng-show="!checkLogin">
                     <a class="nav-link" ui-sref="signIn">Sign in</a>
                 </li>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" ng-show="!checkLogin">
                     <a class="nav-link" ui-sref="signUp">Sign up</a>
                 </li>
                 <!-- end sinh1 -->
-                <li class="nav-item">
-                    <a class="nav-link" ui-sref="lam_accountpage({username:'lamnt42'})">
+                <li class="nav-item" ng-show="checkLogin">
+                    <a class="nav-link" ui-sref="lam_accountpage({username:usernameLogin})">
                             Account page
                         </a>
                 </li>
@@ -88,6 +88,7 @@
     </script>
     <script src="https://code.angularjs.org/1.7.5/angular-resource.min.js">
     </script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-cookies.js"></script>
     <script src="https://unpkg.com/@uirouter/angularjs@1.0.20/release/angular-ui-router.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js">
@@ -103,11 +104,18 @@
     <script src="js/services/lam_article_detail_services.js"></script>
     <script src="js/controllers/lam_accountpage_controller.js"></script>
     <script src="js/controllers/lam_article_detail_controller.js"></script>
+    <script src="js/controllers/editArticleCtrl.js"></script>
+    <script src="js/controllers/myFeedCtrl.js"></script>
     <!-- code truong -->
+    <script src="js/services/myFeed.truong.services.js"></script>
+    <script src="js/controllers/myFeed.truong.controller.home.js"></script>
+    <script src="js/controllers/myFeed.truong.controller.profile.js"></script>
     <!-- code sinh -->
     <!-- sinh1 -->
     <script src="js/controllers/signUp.controller.js"></script>
     <script src="js/controllers/signIn.controller.js"></script>
+    <script src="js/controllers/newArticle.controller.js"></script>
+    <script src="js/controllers/setting.controller.js"></script>
     <!-- link cdn -->
     <script src="https://code.angularjs.org/1.7.5/angular-mocks.js">
     </script>

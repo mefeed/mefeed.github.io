@@ -15,8 +15,11 @@
                 common_services_userinfo,
                 lam_accountpage_services
             ) {
-                // merger 1
-                // console.log($window.localStorage.token);
+
+                //****************************set token and username************************** */
+                common_services_userinfo.setToken($window.localStorage.token);
+                common_services_userinfo.setUsername($window.localStorage.username);
+
 
                 $scope.usernameUrl = $stateParams.username;
                 $scope.load_listArticles = (username, token) => {
