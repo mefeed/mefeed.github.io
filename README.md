@@ -1,4 +1,4 @@
-# ![Angular 1.5+ ES6 & Component API Example App](project-logo.jpeg)
+﻿# ![Angular 1.5+ ES6 & Component API Example App](project-logo.png)
 
 > Example Angular 1.5+ (ES6 + Components) codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
 
