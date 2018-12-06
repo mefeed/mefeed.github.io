@@ -17,13 +17,13 @@
 
                 <form>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Your Name" ng-model='name'>
+                        <input class="form-control form-control-lg" type="text" placeholder="Your Name" ng-model='name' required maxlength='20'>
                     </fieldset>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="email" placeholder="Email" ng-model='email'>
+                        <input class="form-control form-control-lg" type="email" placeholder="Email" ng-model='email' ng-change="changeMail()" required>
                     </fieldset>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="password" placeholder="Password" ng-model='password'>
+                        <input class="form-control form-control-lg" type="password" placeholder="Password" ng-model='password' required minlength='8'>
                     </fieldset>
                     <button class="btn btn-lg btn-primary pull-xs-right" ng-click='signUp()'>
                         Sign up

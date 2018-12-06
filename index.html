@@ -21,40 +21,40 @@
     <!-- header -->
     <nav class="navbar navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" ui-sref="home">
                     conduit
                 </a>
             <ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item">
                     <!-- Add "active" class when you're on that page" -->
-                    <a class="nav-link active" ui-sref="home">
+                    <a class="nav-link" ui-sref="home" ui-sref-active="active">
                             Home
                         </a>
                 </li>
-                <li class="nav-item" ng-show="checkLogin" ui-sref="newArticle">
-                    <a class="nav-link">
+                <li class="nav-item" ng-show="checkLogin">
+                    <a class="nav-link" ui-sref="newArticle" ui-sref-active="active">
                         <i class="ion-compose">
                             </i> New Article
                     </a>
                 </li>
-                <li class="nav-item" ng-show="checkLogin" ui-sref="setting">
-                    <a class="nav-link" href="">
+                <li class="nav-item" ng-show="checkLogin">
+                    <a class="nav-link" ui-sref="setting" ui-sref-active="active">
                         <i class="ion-gear-a">
                             </i> Settings
                     </a>
                 </li>
                 <!-- sinh1 -->
                 <li class="nav-item" ng-show="!checkLogin">
-                    <a class="nav-link" ui-sref="signIn">Sign in</a>
+                    <a class="nav-link" ui-sref="signIn" ui-sref-active="active">Sign in</a>
                 </li>
                 </li>
                 <li class="nav-item" ng-show="!checkLogin">
-                    <a class="nav-link" ui-sref="signUp">Sign up</a>
+                    <a class="nav-link" ui-sref="signUp" ui-sref-active="active">Sign up</a>
                 </li>
                 <!-- end sinh1 -->
                 <li class="nav-item" ng-show="checkLogin">
-                    <a class="nav-link" ui-sref="lam_accountpage({username:usernameLogin})">
-                            Account page
+                    <a class="nav-link" ui-sref="lam_accountpage({username:usernameLogin})" ui-sref-active="active">
+                            {{usernameLogin}}
                         </a>
                 </li>
             </ul>

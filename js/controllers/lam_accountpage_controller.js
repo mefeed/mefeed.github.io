@@ -19,8 +19,9 @@
                 //****************************set token and username************************** */
                 common_services_userinfo.setToken($window.localStorage.token);
                 common_services_userinfo.setUsername($window.localStorage.username);
-
-
+                $scope.listState = {
+                    stateType: 'myActicle'
+                }
                 $scope.usernameUrl = $stateParams.username;
                 $scope.load_listArticles = (username, token) => {
                     return lam_accountpage_services.listArticles(username, token).$promise
@@ -43,9 +44,22 @@
                 //****************************toggle article************************** */
                 $scope.displayArticle = true;
                 $scope.goTolistArticles = () => {
+                    $scope.listState.stateType = "myActicle";
+                    if ($scope.listArticles.length < 1) {
+                        $scope.messageAcountPage = "No articles are here... yet.";
+                    } else {
+                        $scope.messageAcountPage = '';
+                    }
+
                     $scope.displayArticle = true;
                 };
                 $scope.toToListArticlesFavorited = () => {
+                    $scope.listState.stateType = "favoritedArticles";
+                    if ($scope.listArticlesFavorited.length < 1) {
+                        $scope.messageAcountPage = "No articles are here... yet.";
+                    } else {
+                        $scope.messageAcountPage = '';
+                    }
                     $scope.displayArticle = false;
                 };
                 //****************************follow or seting************************** */
@@ -131,4 +145,4 @@
                     })
             }
         ])
-})();;
+})();

@@ -37,7 +37,7 @@
         $urlRouterProvider.otherwise('/home');
         $stateProvider.state({
             name: 'home',
-            url: '/home',
+            url: '/',
             templateUrl: 'template/myFeed.truong.home_page.html',
             controller: 'myFeed.truong.controller.home'
         });

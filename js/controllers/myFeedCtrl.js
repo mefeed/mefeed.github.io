@@ -6,7 +6,8 @@
         //****************************set token and username************************** */
         common_services_userinfo.setToken($window.localStorage.token);
         common_services_userinfo.setUsername($window.localStorage.username);
-
+        $state.go('home');
+        console.log($window.localStorage.token, $scope.checkLogin);
         $scope.usernameLogin = common_services_userinfo.getUsername();
         if ($window.localStorage.token == undefined) {
             $scope.checkLogin = false;

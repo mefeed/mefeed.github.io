@@ -138,6 +138,8 @@
                         $scope.feedLoaded = true;
                         $scope.articles = items.data.articles;
                         if (items.data.articles.length < 1) {
+                            $scope.feedLoaded = false;
+                            $scope.articlesCount = items.data.articlesCount;
                             $scope.message = 'No articles are here... yet.';
                             return;
                         }

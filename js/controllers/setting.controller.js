@@ -5,8 +5,9 @@
         common_services_userinfo.setToken($window.localStorage.token);
         common_services_userinfo.setUsername($window.localStorage.username);
         common_services_userinfo.setEmail($window.localStorage.email);
-
+        // console.log($window.localStorage);
         //****************************profile************************** */
+        $scope.passW = $window.localStorage.pw;
         lam_accountpage_services.getProfile(common_services_userinfo.getUsername(), common_services_userinfo.getToken()).$promise.then(data => {
             $scope.urlPr = data.profile.image;
             $scope.yourName = data.profile.username;
@@ -20,12 +21,11 @@
         }
         $scope.showErr = false;
         $scope.updateSettings = function() {
-            console.log('aaaa')
             if ($scope.passW.length < 8) {
                 $scope.showErr = true;
                 $scope.mes = 'password is too short (minimum is 8 characters)'
             } else {
-                let data = {
+                let req = {
                     "user": {
                         "image": $scope.urlPr,
                         'username1': $scope.yourName,
@@ -34,15 +34,20 @@
                         'password': $scope.passW,
                     }
                 }
+                let token = $window.localStorage.token;
                 $http({
                     method: 'PUT',
                     url: 'https://conduit.productionready.io/api/user',
-                    data: data,
+                    data: req,
+                    headers: {
+                        authorization: `Token ${token}`,
+                        'content-type': 'application/json'
+                    }
                 }).then(function successCallback(response) {
-                    console.log('succ')
-                    console.log(response)
+                    console.log(response);
+                    $state.go(`lam_accountpage`, { username: $scope.yourName });
                 }, function errorCallback(response) {
-                    console.log(response)
+                    console.log(response);
                 });
             }
         }

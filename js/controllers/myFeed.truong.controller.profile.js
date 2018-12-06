@@ -32,9 +32,7 @@
                             $scope.follow = "Follow";
                         }
 
-                    }, function errorCallback(err) {
-                        console.log('404');
-                    });
+                    }, function errorCallback(err) {});
                 }
 
 
@@ -46,9 +44,7 @@
                         $scope.articlesCount = article.data.articlesCount;
                         let pageNumber = Math.floor($scope.articlesCount / numberTen)
                         $scope.pageRange = [...Array(pageNumber).keys()];
-                    }, function errorCallback(err) {
-                        console.log(err);
-                    });
+                    }, function errorCallback(err) {});
                 }
 
                 function favoritedArticles() {
@@ -65,9 +61,7 @@
                             $scope.pageRange = [...Array(pageNumber).keys()];
                         }
 
-                    }, function errorCallback(err) {
-                        console.log(err);
-                    });
+                    }, function errorCallback(err) {});
                 }
 
                 $scope.changeList = (data) => {
@@ -100,17 +94,13 @@
                             .then(function successCallback(response) {
                                 $scope.isSubmitting = false;
                                 checkFeed(type);
-                            }, function errorCallback(err) {
-                                console.log(err);
-                            });
+                            }, function errorCallback(err) {});
                     } else {
                         ArticlesFactory.postFavorite(slug)
                             .then(function successCallback(response) {
                                 $scope.isSubmitting = false;
                                 checkFeed(type);
-                            }, function errorCallback(err) {
-                                console.log(err);
-                            });
+                            }, function errorCallback(err) {});
                     }
                 }
 
@@ -132,17 +122,13 @@
                             .then(function successCallback(response) {
                                 $scope.isSubmitting = false;
                                 getProfilesUser();
-                            }, function errorCallback(err) {
-                                console.log(err);
-                            });
+                            }, function errorCallback(err) {});
                     } else {
                         profilesFactory.postFollowUser(userName)
                             .then(function successCallback(response) {
                                 $scope.isSubmitting = false;
                                 getProfilesUser();
-                            }, function errorCallback(err) {
-                                console.log(err);
-                            });
+                            }, function errorCallback(err) {});
                     }
                 }
             }

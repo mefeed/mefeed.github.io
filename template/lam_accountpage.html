@@ -12,12 +12,14 @@
                             {{profile.bio}}
                         </p>
                         <span ng-show="displayBlockFollow">
-                            <button class="btn btn-sm btn-outline-secondary action-btn" ng-click="follow(profile.username)" ng-show="displayFollow">
+                            <button class="btn btn-sm btn-outline-secondary action-btn" ng-click="follow(profile.username)"
+                                ng-show="displayFollow">
                                 <i class="ion-plus-round">
                                 </i>
                                 Follow {{profile.username}}
                             </button>
-                            <button class="btn btn-sm btn-outline-secondary action-btn" ng-click="follow(profile.username)" ng-show="!displayFollow">
+                            <button class="btn btn-sm btn-outline-secondary action-btn" ng-click="follow(profile.username)"
+                                ng-show="!displayFollow">
                                 <i class="ion-plus-round">
                                 </i>
                                 Unfollow {{profile.username}}
@@ -26,10 +28,10 @@
                         <span ng-show="!displayBlockFollow">
                             <a ui-sref="setting">
                                 <button class="btn btn-sm btn-outline-secondary action-btn">
-                                        <i class="ion-gear-a">
-                                        </i>
-                                        Edit Profile Settings
-                                    </button>
+                                    <i class="ion-gear-a">
+                                    </i>
+                                    Edit Profile Settings
+                                </button>
                             </a>
                         </span>
                     </div>
@@ -42,16 +44,17 @@
                     <div class="articles-toggle">
                         <ul class="nav nav-pills outline-active">
                             <li class="nav-item">
-                                <a class="nav-link" ng-click="goTolistArticles()">
+                                <a href="/#/@{{profile.username}}" class="nav-link" ng-class="{active: listState.stateType === 'myActicle'}" ng-click="goTolistArticles()">
                                     My Articles
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" ng-click="toToListArticlesFavorited()">
+                                <a href="/#/@{{profile.username}}/favorites" class="nav-link" ng-class="{active: listState.stateType === 'favoritedArticles'}" ng-click="toToListArticlesFavorited()">
                                     Favorited Articles
                                 </a>
                             </li>
                         </ul>
+                        <div>{{messageAcountPage}}</div>
                     </div>
                     <!-- fix view -->
                     <!-- *********listArticles********* -->

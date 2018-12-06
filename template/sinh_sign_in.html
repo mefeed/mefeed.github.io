@@ -18,7 +18,7 @@
                         <input class="form-control form-control-lg" placeholder="Email" ng-model='email' required type="email">
                     </fieldset>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="password" placeholder="Password" ng-model='password' required>
+                        <input class="form-control form-control-lg" type="password" placeholder="Password" ng-model='password' required minlength="8">
                     </fieldset>
                     <button class="btn btn-lg btn-primary pull-xs-right" ng-click='signIn()'>
                         Sign in

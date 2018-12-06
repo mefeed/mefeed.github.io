@@ -42,7 +42,7 @@
                             <a href="#/@{{article.author.username}}" ui-sref="profile({ username: article.author.username })" class="author">{{article.author.username}}</a>
                             <span class="date">{{article.updatedAt | date :'MMMM d, yyyy'}}</span>
                         </div>
-                        <button class="btn btn-sm" ng-class="{ 'disabled': isSubmitting,
+                        <button class="btn btn-sm pull-xs-right" ng-class="{ 'disabled': isSubmitting,
               'btn-outline-primary': !article.favorited,
               'btn-primary': article.favorited }" ng-click="submit(article.slug, article.favorited, listConfig.type)">
             <i class="ion-heart"></i> {{article.favoritesCount}}
@@ -53,7 +53,7 @@
                         <p class="body-summary" ui-sref="lam_article_detail({slug: article.slug})">{{article.body}}</p>
                         <span ui-sref="lam_article_detail({slug: article.slug})">Read more...</span>
                         <ul class="tag-list">
-                            <li class="tag-default tag-pill tag-outline ng-binding ng-scope" ng-repeat="tag in article.tagList |  limitTo: 5">
+                            <li ui-sref="lam_article_detail({slug: article.slug})" class="tag-default tag-pill tag-outline ng-binding ng-scope" ng-repeat="tag in article.tagList |  limitTo: 5">
                                 {{tag}}
                             </li>
                         </ul>

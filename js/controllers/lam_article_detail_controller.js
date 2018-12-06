@@ -19,6 +19,8 @@
                 common_services_userinfo.setToken($window.localStorage.token);
                 common_services_userinfo.setUsername($window.localStorage.username);
                 $scope.displayComment = false;
+                $scope.displayComment = true;
+
                 if (common_services_userinfo.getToken() === undefined) {
                     $scope.displayComment = false;
                 }
