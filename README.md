@@ -1,25 +1,26 @@
-﻿# ![Angular 1.5+ ES6 & Component API Example App](project-logo.png)
+﻿# BLOG-APP-Conduit
+**Author**: team 3, class Angular 01, Fresher Academy
 
-> Example Angular 1.5+ (ES6 + Components) codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
-
-View the **[demo application](https://angularjs.realworld.io)** or **[learn how to build the application from scratch](https://thinkster.io/angularjs-es6-tutorial)**!
-
-# Getting started
-
-1. Clone repo
-1. Open browres
-
-Trường: 
-1. Home page
-2. Profile
-
-Sinh:
-1. Sign In
-2. Sign Up
-3. Setting
-4. New Article
+**Member**: LamNT42 (leader), SinhPV1, TruongTT2
 
 
-Lam:
-1. Article Detail
-2. Account Page
+## ABOUT APP:
+
+  **Over view**: 
+  "Conduit" is a social blogging site. It uses a custom API for all requests, including authentication.
+  
+  **General functionality**: 
+  * Authenticate users via JWT (login/signup pages + logout button on settings page)
+  * CRU* users (sign up & settings page - no deleting required)
+  * CRUD Articles
+  * CR*D Comments on articles (no updating required)
+  * GET and display paginated lists of articles
+  * Favorite articles
+  * Follow other users
+
+  **Technology**:
+  * Languages: HTML, JavaScript, CSS
+  * Javascript Frameworks: AngularJS
+  * CSS Frameworks: Bootstrap 4
+  * Source Control: Github
+  * Code Quality Analysis: Prettier
